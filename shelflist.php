@@ -26,37 +26,6 @@ function left_pad_number($number, $pad_amount) {
 	return $string;
 }
 
-function normalize_volume($string_data) {
-	//will return a string formatted to sort properly among other volumes
-	// For example:
-	// given a volume number:
-	// "v.1"
-	// will return:
-	// "v.    1"
-
-	// given a volume number:
-	// "v.11"
-	// will return:
-	// "v.   11"
-
-	$return_string = "";
-	$len = strlen($string_data);
-
-	//split everything that is a number, and everything that is not a number into $matches
-	$regex = "/[0-9]+|[^0-9]+/";
-	preg_match_all($regex, $string_data, $matches);
-
-	for($i=0; $i<count($matches[0]); $i++) {
-		if ( is_numeric ($matches[0][$i]) ) {
-			$matches[0][$i] = left_pad_number($matches[0][$i], 5);
-		}
-	}
-
-	$string = implode('', $matches[0]);
-
-	return $string;
-} //end function normalize_callnumber
-
 
 // sanitize the input
 if ( isset($_GET['barcode']) )  {
