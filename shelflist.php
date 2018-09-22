@@ -171,11 +171,7 @@ $statement = $connection->prepare($sql);
 $statement->execute();
 $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-if($row["volume"]) {
-	$row["call_number_norm"] = $row["call_number_norm"] .
-		" " .
-		normalize_volume($row["volume"]);
-}
+
 
 header('Content-Type: application/json');
 echo json_encode($row);
