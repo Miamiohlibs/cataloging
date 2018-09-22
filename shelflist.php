@@ -105,9 +105,9 @@ WHERE
 i.location_code = '$location'
 --   --comment out this section for items organized by title
 -- AND
--- p.call_number_norm >= lower('BF   77 U53 1992 SE')
+-- p.call_number_norm >= lower('PR 4879 L2 D83 2009')
 -- AND
--- p.call_number_norm <= lower('TX  335 L69 1990 TR BOOK')
+-- p.call_number_norm <= lower('PZ    7 B8163 WH19')
 
 
 -- since we have the situation where multiple bibs can share the same item record, we should remove duplicated items.
