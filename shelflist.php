@@ -1,31 +1,5 @@
 <?php
 //https://raw.githubusercontent.com/rayvoelker/2015RoeschLibraryInventory/master/php/inventory_barcode.php
-function left_pad_number($number, $pad_amount) {
-	//returns a string value of a number padded out to the maximum length of the $pad_amount
-
-	//if the length of the number is the same or greater than the pad_amount, just return the number unpadded
-	if ( strlen($number) >= $pad_amount ) {
-		return $number;
-	}
-
-	$result = array();
-	$number = array_map('intval', str_split($number));
-
-	//pop off values from the end of number and push them onto the $result stack
-	while ($number) {
-		array_push($result, array_pop($number) );
-	}
-
-	while ( count($result) < $pad_amount ) {
-		array_push($result, " ");
-	}
-
-	$result = array_reverse($result);
-	$string = implode('', $result);
-
-	return $string;
-}
-
 
 // sanitize the input
 if ( isset($_GET['barcode']) )  {
