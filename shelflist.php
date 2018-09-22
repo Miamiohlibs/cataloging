@@ -1,81 +1,21 @@
 <?php
 //https://raw.githubusercontent.com/rayvoelker/2015RoeschLibraryInventory/master/php/inventory_barcode.php
-function left_pad_number($number, $pad_amount) {
-	//returns a string value of a number padded out to the maximum length of the $pad_amount
-
-	//if the length of the number is the same or greater than the pad_amount, just return the number unpadded
-	if ( strlen($number) >= $pad_amount ) {
-		return $number;
-	}
-
-	$result = array();
-	$number = array_map('intval', str_split($number));
-
-	//pop off values from the end of number and push them onto the $result stack
-	while ($number) {
-		array_push($result, array_pop($number) );
-	}
-
-	while ( count($result) < $pad_amount ) {
-		array_push($result, " ");
-	}
-
-	$result = array_reverse($result);
-	$string = implode('', $result);
-
-	return $string;
-}
-
-function normalize_volume($string_data) {
-	//will return a string formatted to sort properly among other volumes
-	// For example:
-	// given a volume number:
-	// "v.1"
-	// will return:
-	// "v.    1"
-
-	// given a volume number:
-	// "v.11"
-	// will return:
-	// "v.   11"
-
-	$return_string = "";
-	$len = strlen($string_data);
-
-	//split everything that is a number, and everything that is not a number into $matches
-	$regex = "/[0-9]+|[^0-9]+/";
-	preg_match_all($regex, $string_data, $matches);
-
-	for($i=0; $i<count($matches[0]); $i++) {
-		if ( is_numeric ($matches[0][$i]) ) {
-			$matches[0][$i] = left_pad_number($matches[0][$i], 5);
-		}
-	}
-
-	$string = implode('', $matches[0]);
-
-	return $string;
-} //end function normalize_callnumber
 
 
 // sanitize the input
-if ( isset($_GET['barcode']) )  {
+if ( isset($_GET['location']) )  {
 	header("Content-Type: application/json");
-	// ensure that the barcode value is formatted somewhat sanely
-	if( strlen($_GET['barcode']) > 14 ) {
-		//we don't expect barcodes to be longer than 12 alpha-numeric characters
-		//although, 99.9 % of our scannable barcodes are 10 digit, I'm leaving some breathing room
-		echo "{}";
-		die();
-	}
+
+
 	// barcodes are ONLY alpha-numeric ... strip anything that isn't this.
-	$barcode = preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['barcode']);
+	$location = preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['location']);
+	echo $location;
 }
 else{
 	die();
 }
 
-/*
+/* // commenting out for testing
 
 include file (item_barcode.php) supplies the following
 arguments as the example below illustrates :
@@ -90,6 +30,7 @@ arguments as the example below illustrates :
 		. "charset=utf8;"
 */
 
+/*
 //reset all variables needed for our connection
 $username = null;
 $password = null;
@@ -183,5 +124,7 @@ echo json_encode($row);
 $row = null;
 $statement = null;
 $connection = null;
+
+*/ //remove after testing
 
 ?>
