@@ -161,7 +161,7 @@ ON
   b.bib_record_id = l.bib_record_id
 
 WHERE
-i.location_code = '$barcode'
+i.location_code = \'' . $barcode . '\'
 --   --comment out this section for items organized by title
 -- AND
 -- p.call_number_norm >= lower('BF   77 U53 1992 SE')
