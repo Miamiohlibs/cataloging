@@ -5,12 +5,7 @@
 if ( isset($_GET['barcode']) )  {
 	header("Content-Type: application/json");
 	// ensure that the barcode value is formatted somewhat sanely
-	if( strlen($_GET['barcode']) > 14 ) {
-		//we don't expect barcodes to be longer than 12 alpha-numeric characters
-		//although, 99.9 % of our scannable barcodes are 10 digit, I'm leaving some breathing room
-		echo "{}";
-		die();
-	}
+
 	// barcodes are ONLY alpha-numeric ... strip anything that isn't this.
 	$barcode = preg_replace("/[^a-zA-Z0-9]/", "", $_GET['barcode']);
 }
