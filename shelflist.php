@@ -69,7 +69,7 @@ if ( isset($_GET['barcode']) )  {
 		die();
 	}
 	// barcodes are ONLY alpha-numeric ... strip anything that isn't this.
-	$barcode = preg_replace("/[^a-zA-Z0-9\s]/", "", $_GET['barcode']);
+	$barcode = preg_replace("/[^a-zA-Z0-9]/", "", $_GET['barcode']);
 }
 else{
 	die();
