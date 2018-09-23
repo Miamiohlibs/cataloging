@@ -109,10 +109,12 @@ $statement = $connection->prepare($sql);
 $statement->execute();
 $row = $statement->fetch(PDO::FETCH_ASSOC);
 
-
+//need to loop through the rows json encoding the entire array
 
 header('Content-Type: application/json');
 echo json_encode($row);
+
+
 
 $row = null;
 $statement = null;
