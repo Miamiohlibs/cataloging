@@ -2,7 +2,7 @@
 /*
 Purpose of this script is to provide a basic output for subject selectors to weed collections
 
-Sample URL: http://ulblwebt02.lib.miamioh.edu/~bomanca/collection/floyd.php?location=scr&start=AY%20%20%2067%20N5%20W7%20%202005&end=PN%20%20171%20F56%20W35%201998
+Sample URL: http://ulbl.library.edu/~user/collection/floyd.php?location=scr&start=AY%20%20%2067%20N5%20W7%20%202005&end=PN%20%20171%20F56%20W35%201998
 */
 
 require_once('getdb.php');
