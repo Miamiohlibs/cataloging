@@ -1,7 +1,7 @@
 <?php
 //https://raw.githubusercontent.com/rayvoelker/2015RoeschLibraryInventory/master/php/inventory_barcode.php
 
-$dsn = "pgsql:host=10.3.9.185 dbname=iii port=1032 sslmode=require";
+$dsn = "pgsql:host=host dbname=iii port=1032 sslmode=require";
 $username = "";
 $password = "";
 
